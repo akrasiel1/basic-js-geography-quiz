@@ -2,6 +2,8 @@
 const correctAnswers = ['B', 'C', 'B', 'A'];
 // Selecting form for manuipulation
 const form = document.querySelector('.quiz-form');
+// Selecting result message
+const result = document.querySelector('.result');
 // Form submission and app functionality
 form.addEventListener('submit', e => {
     e.preventDefault();
@@ -18,6 +20,7 @@ form.addEventListener('submit', e => {
         };
     });
 
-    // Logging result to console
-    console.log(score);
+    // Showing the result message after submission
+    result.querySelector('span').textContent = `${score}%`;
+    result.classList.remove('d-none');
 });
