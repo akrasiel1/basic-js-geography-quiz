@@ -20,9 +20,23 @@ form.addEventListener('submit', e => {
         };
     });
 
-    // Showing the result message after submission
-    result.querySelector('span').textContent = `${score}%`;
+    //Showing result after submission by removing display:none class property
     result.classList.remove('d-none');
     // Smooth scrolling to result message
     scrollTo({top:0, behavior: 'smooth'});
+    // Result percentage animation
+    // Creating an output to be compared with score
+    let output = 0;
+    // Creating timer
+    const timer = setInterval(() => {
+        result.querySelector('span').textContent = `${output}%`;
+        if(output === score) {
+            //if output value matches score's value, stop counting
+            clearInterval(timer);
+        }
+        else {
+            //otherwise keep adding one until output equals score value
+            output++;
+        }
+    }, 15);
 });
